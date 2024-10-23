@@ -1,34 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
+import React from "react";
+import { useNavigation } from "expo-router";
+import { Link } from "expo-router";
 
-export default function Page() {
+const Index = () => {
+  const navigator=useNavigation();
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
-      </View>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "centre"}}>
+      <Text style={{ fontSize: 26, fontWeight: "bold"}}>LoginScreen</Text>
+      <Link href="/home">Go to Tabs</Link> {/*linking to the url*/}
+      <Button 
+        title="Login" 
+        onPress={()=>navigator.navigate("(tabs)")}>
+      </Button>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});
+};
